@@ -9,6 +9,7 @@ Connected over Bluetooth, it sends Wi-Fi Info to Server and recieves the same in
 
 - [X] Asks User for Permissions of Bluetooth and Location Services
 - [X] Asks User to Turn on Bluetooth
-- [ ] Looks for Nearby Devices
+- [X] Looks for Nearby Devices
+- [ ] Display Nearby Devices in Options Menu
 - [ ] Sends Wi-Fi info to Server with Button
 - [ ] Displays if Connection is Successful
