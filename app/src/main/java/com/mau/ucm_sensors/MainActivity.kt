@@ -11,8 +11,6 @@ import androidx.core.content.ContextCompat
 import com.mau.ucm_sensors.bluetooth.model.BluetoothLogic
 
 class MainActivity : AppCompatActivity() {
-    private fun PackageManager.missingSystemFeature(name: String): Boolean = !hasSystemFeature(name)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
