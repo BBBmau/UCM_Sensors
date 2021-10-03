@@ -1,18 +1,14 @@
 package com.mau.ucm_sensors
 
 import android.Manifest
-import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.mau.ucm_sensors.bluetooth.model.bluetoothLogic
-import java.security.AccessController.getContext
+import com.mau.ucm_sensors.bluetooth.model.BluetoothLogic
 
 class MainActivity : AppCompatActivity() {
     private fun PackageManager.missingSystemFeature(name: String): Boolean = !hasSystemFeature(name)
@@ -20,9 +16,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         checkPermission()
-
-
     }
 
     private fun checkPermission(){
@@ -34,7 +29,14 @@ class MainActivity : AppCompatActivity() {
                     this,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN),
                     0)
-                Log.d("BluetoothLogic","Permission was not Granted")
+
+            }
+
+            if(ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED){
+                BluetoothLogic.enableBluetooth(this)
+                Log.d("BluetoothLogic","enable Bluetooth")
             }
         }
     }
