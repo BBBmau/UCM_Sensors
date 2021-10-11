@@ -1,4 +1,9 @@
 package com.mau.ucm_sensors.view
 
-class BLEdeviceList {
+import android.app.Activity
+import com.mau.ucm_sensors.bluetooth.model.BluetoothLogic
+
+class BLEdeviceList : Activity(){
+
+
 }

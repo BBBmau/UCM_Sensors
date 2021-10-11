@@ -24,7 +24,8 @@ object BluetoothLogic {
             startActivityForResult(activity,enableBtIntent,0,null)
         }
         else{
-            scanLeDevice()
+            Log.d("Bluetooth", "Bluetooth is On.")
+            //scanLeDevice()
         }
 
     }
@@ -43,23 +44,16 @@ object BluetoothLogic {
 // Stops scanning after 10 seconds.
         val SCAN_PERIOD: Long = 1000
 
-            if (!scanning) { // Stops scanning after a pre-defined scan period.
-                handler.postDelayed({
-                    scanning = false
-                    bluetoothLeScanner?.stopScan(leScanCallback)
-                }, SCAN_PERIOD)
-                scanning = true
-                bluetoothLeScanner?.startScan(leScanCallback)
-            } else {
+        if (!scanning) { // Stops scanning after a pre-defined scan period.
+            handler.postDelayed({
                 scanning = false
                 bluetoothLeScanner?.stopScan(leScanCallback)
-            }
+                                }, SCAN_PERIOD)
+            scanning = true
+            bluetoothLeScanner?.startScan(leScanCallback)
+        } else {
+            scanning = false
+            bluetoothLeScanner?.stopScan(leScanCallback)
         }
-
-
-
-
-
-
-
+    }
 }

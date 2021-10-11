@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UCM_Sensors/app/src/main/res/layout/activity_main.xml" value="0.24864130434782608" />
+        <entry key="..\:/UCM_Sensors/app/src/main/res/layout/activity_scan.xml" value="0.25" />
+        <entry key="..\:/UCM_Sensors/app/src/main/res/layout/item_sensor.xml" value="0.22916666666666666" />
       </map>
     </option>
   </component>
