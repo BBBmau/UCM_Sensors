@@ -25,18 +25,22 @@ object BluetoothLogic {
         }
         else{
             Log.d("Bluetooth", "Bluetooth is On.")
-            //scanLeDevice()
+            scanLeDevice()
         }
 
     }
-
+    private val LeDeviceListAdapter = LeDeviceListAdapter()
     private fun scanLeDevice(){
         val bluetoothLeScanner = bluetoothAdapter?.bluetoothLeScanner
         var scanning = false
         val handler = Handler()
+
         val leScanCallback : ScanCallback = object : ScanCallback() {
             override fun onScanResult(callbackType: Int, result: ScanResult?) {
                 super.onScanResult(callbackType, result)
+                if (result != null) {
+                    LeDeviceListAdapter.addDevice(result.device)
+                }
                 Log.d("scanLeDevice", "Scanning Result")
             }
         }
