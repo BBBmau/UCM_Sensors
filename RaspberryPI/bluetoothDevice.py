@@ -1,29 +1,9 @@
 import bluetooth
 
-server = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-host = ""
-port = 1
-print("Bluetooth Socket Created")
+print(bluetooth.lookup_name("60:B7:6E:34:15:C5"))
 
-try:
-	server.bind((host,port))
-	print("Bluetooth Binding Completed")
-except:
-	print("Bluetooth Binding Failed") 
-	server_sock.listen(1)
-print("Running")
+nearby_devices = bluetooth.discover_devices(lookup_names=True, duration=5)
+print("Found {} devices.".format(len(nearby_devices)))
 
-client_sock, address = server_sock.accept()
-print("Accepted connection from ", str(address))
-
-while True:
-	recvdata = client_sock.recv(1024)
-	print("Received \"%s\" through Bluetooth"%recvdata)
-	
-	if(recvdata == "Q"):
-		print("Exiting")
-		break
-
-client_sock.close()
-server_sock.close()
-	
+for addr, name in nearby_devices:
+    print("  {} - {}".format(addr, name))
